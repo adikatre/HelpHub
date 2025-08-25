@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HelpHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#"><i class="bi bi-heart-fill text-danger"></i> HelpHub</a>
+        <div class="ms-auto d-flex align-items-center gap-3">
+          <span class="badge rounded-pill text-bg-primary">Open: <span id="openCount">0</span></span>
+          <span class="badge rounded-pill text-bg-success">Completed Today: <span id="completedCount">0</span></span>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-3">
+      <section class="p-3 p-md-4 mb-3 bg-white border rounded-3 shadow-sm">
+        <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
+          <div class="flex-grow-1">
+            <h1 class="h4 mb-1">Build solutions that matter</h1>
+            <p class="mb-0 text-muted">Post real needs. Claim tasks. Make an immediate impact in your community.</p>
+          </div>
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">
+            <i class="bi bi-plus-circle"></i> Create Request
+          </button>
+        </div>
+      </section>
+      <div class="row g-2 align-items-end mb-3">
+        <div class="col-12 col-md-3">
+          <label for="filterCategory" class="form-label">Category</label>
+          <select id="filterCategory" class="form-select" aria-label="Filter by category">
+            <option value="">All</option>
+            <option>Food</option>
+            <option>Tutoring</option>
+            <option>Elderly Care</option>
+            <option>Errands</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-3">
+          <label for="filterUrgency" class="form-label">Urgency</label>
+          <select id="filterUrgency" class="form-select" aria-label="Filter by urgency">
+            <option value="">All</option>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-4">
+          <label for="filterSearch" class="form-label">Search</label>
+          <input id="filterSearch" type="search" class="form-control" placeholder="Search title or description" aria-label="Keyword search">
+        </div>
+        <div class="col-12 col-md-2 d-grid gap-2">
+          <button id="clearFilters" class="btn btn-outline-secondary" type="button" aria-label="Clear filters">Clear</button>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal"><i class="bi bi-plus-circle"></i> Create</button>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <div class="small text-muted" id="resultsInfo"></div>
+      </div>
+
+      <div id="taskGrid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3"></div>
+    </main>
+
+    <!-- Create Request Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <form id="createForm" class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createModalLabel">Create Request</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input id="title" name="title" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="row g-2">
+              <div class="col-12 col-md-6">
+                <label for="category" class="form-label">Category</label>
+                <select id="category" name="category" class="form-select" required>
+                  <option value="" disabled selected>Select</option>
+                  <option>Food</option>
+                  <option>Tutoring</option>
+                  <option>Elderly Care</option>
+                  <option>Errands</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="urgency" class="form-label">Urgency</label>
+                <select id="urgency" name="urgency" class="form-select" required>
+                  <option value="" disabled selected>Select</option>
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                </select>
+              </div>
+            </div>
+            <div class="row g-2 mt-1">
+              <div class="col-12 col-md-6">
+                <label for="location" class="form-label">Location</label>
+                <input id="location" name="location" class="form-control" required>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="requesterName" class="form-label">Requester Name</label>
+                <input id="requesterName" name="requesterName" class="form-control" required>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Volunteer Modal -->
+    <div class="modal fade" id="volunteerModal" tabindex="-1" aria-labelledby="volunteerModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <form id="volunteerForm" class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="volunteerModalLabel">Volunteer for Task</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="volunteerTaskId">
+            <div class="mb-3">
+              <label for="volunteerName" class="form-label">Your Name</label>
+              <input id="volunteerName" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="volunteerNote" class="form-label">Note (optional)</label>
+              <textarea id="volunteerNote" class="form-control" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-success">Volunteer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toasts -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+      <div id="toast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div id="toastBody" class="toast-body">Action successful</div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/app.js"></script>
+  </body>
+  </html>
+
+

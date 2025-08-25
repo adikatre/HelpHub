@@ -1,0 +1,6 @@
+body { background-color: #f8f9fa; }
+.card:hover { box-shadow: 0 0.75rem 1.25rem rgba(0,0,0,.08); transform: translateY(-1px); }
+.badge + .badge { margin-left: .25rem; }
+section .btn { white-space: nowrap; }
+
+
