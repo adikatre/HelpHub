@@ -24,4 +24,6 @@ Frontend:
 - Client-side filters and search
 - Mobile-friendly Bootstrap UI
 
+---
 
+Note: This project is not viewable on GitHub pages due to its responsive nature.
