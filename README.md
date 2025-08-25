@@ -3,14 +3,19 @@ HelpHub connects nearby helpers with real community needs—fast. With a Bootstr
 
 ## Quick Start
 Backend:
+
+```bash
   cd helphub/backend
   pip install -r requirements.txt
   python app.py  # http://localhost:5001
+```
 
 Frontend:
+```bash
   cd helphub/frontend
   python -m http.server 5500
   # open http://localhost:5500
+```
 
 ## Features
 - Post requests with category, urgency, location
