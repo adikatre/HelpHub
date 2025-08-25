@@ -6469,7 +6469,7 @@
       "urgency": "High",
       "location": "North End",
       "requesterName": "Emma",
-      "status": "Claimed",
+      "status": "Completed",
       "volunteerName": "Taylor",
       "volunteerNote": "Have a car",
       "createdAt": "2025-08-22T14:10:36.814214Z"
@@ -6499,8 +6499,34 @@
       "volunteerName": "Drew",
       "volunteerNote": "Bringing supplies",
       "createdAt": "2025-08-24T21:10:36.814237Z"
+    },
+    {
+      "id": 501,
+      "title": "Calculus Tutoring",
+      "description": "eee",
+      "category": "Tutoring",
+      "urgency": "High",
+      "location": "Dubai",
+      "requesterName": "Aditya",
+      "status": "Open",
+      "volunteerName": null,
+      "volunteerNote": null,
+      "createdAt": "2025-08-25T03:12:59.203902Z"
+    },
+    {
+      "id": 502,
+      "title": "Calculus Help",
+      "description": "I would like to have a tutor who will help me with my final Calculus exam.",
+      "category": "Tutoring",
+      "urgency": "High",
+      "location": "Dubai",
+      "requesterName": "Aditya",
+      "status": "Completed",
+      "volunteerName": "Neil",
+      "volunteerNote": "Happy to help!",
+      "createdAt": "2025-08-25T03:20:00.786793Z"
     }
   ],
-  "nextId": 501,
-  "completedToday": 28
+  "nextId": 503,
+  "completedToday": 30
 }
